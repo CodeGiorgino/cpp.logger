@@ -5,7 +5,7 @@ Simple c++ library to log messages.
 ### Include
 Include the library in your source file:
 
-```cpp main.cpp
+```cpp
 #include "path/to/lib/logger.hpp"
 ...
 ```
