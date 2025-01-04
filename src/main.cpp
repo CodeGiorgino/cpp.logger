@@ -11,7 +11,7 @@
 #define bold(text) __fontBold text __fontNormal
 
 namespace logger {
-auto log_error(Report rpt, bool shouldThrow) -> void {
+auto print(Report rpt, bool shouldThrow) -> void {
     // log the severity level
     switch (rpt.level) {
         case LogLevel::Debug:   std::cout << bold("[D] Debug:   "); break;
@@ -24,14 +24,14 @@ auto log_error(Report rpt, bool shouldThrow) -> void {
     if (shouldThrow) throw std::runtime_error("Unhandled exception has occured.");
 }
 
-auto log_error(const char* filepath, Report rpt, bool shouldThrow) -> void {
+auto print(const char* filepath, Report rpt, bool shouldThrow) -> void {
     // log the error message
-    log_error(rpt, false);
+    print(rpt, false);
 
     // log the error line
     std::ifstream stream(filepath);
     if (!stream)
-        log_error((Report) {
+        print((Report) {
                 .level = LogLevel::Error,
                 .message = std::format("cannot open file '{}'", filepath).c_str()
             }, true);

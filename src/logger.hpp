@@ -17,6 +17,6 @@ struct Report final {
     const char* message = "";
 };
 
-auto log_error(Report rpt, bool shouldThrow = false) -> void;
-auto log_error(const char* filepath, Report rpt, bool shouldThrow = false) -> void;
+auto print(Report rpt, bool shouldThrow = false) -> void;
+auto print(const char* filepath, Report rpt, bool shouldThrow = false) -> void;
 }  // namespace lib
